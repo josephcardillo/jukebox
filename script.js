@@ -1,53 +1,70 @@
 // make song array
-var songs = [
+var songsArr = [
   {
     id: 0,
-    src: "/Users/cardillo/Desktop/nycda/jukebox/song-1.mp3"
+    name: "Womp Womp",
+    src: "/Users/cardillo/Desktop/nycda/jukebox/womp.mp3"
   },
   {
     id: 1,
-    src: "/Users/cardillo/Desktop/nycda/jukebox/song-2.mp3"
+    name: "Doot Doo",
+    src: "/Users/cardillo/Desktop/nycda/jukebox/doot.mp3"
+  },
+  {
+    id: 2,
+    name: "Ballad For Peter",
+    src: "/Users/cardillo/Desktop/nycda/jukebox/ballad.mp3"
+  },
+  {
+    id: 3,
+    name: "Birthday-O",
+    src: "/Users/cardillo/Desktop/nycda/jukebox/birthday.mp3"
+  },
+  {
+    id: 4,
+    name: "Chump It Up",
+    src: "/Users/cardillo/Desktop/nycda/jukebox/chump.mp3"
   },
 ];
 
+// set variables
+var juke = $("#jukeBox")[0];
+var button1 = "#start";
+var button2 = "#pause";
+var button3 = "#play";
+var button4 = "#next";
+var l = songsArr.length;
+var songName = $("#song-title")[0]
 
-var juke = '$("#jukeBox")[0]';
-var a = 3;
 // create jukebox object and methods(?)
 var jukebox = {
   myJuke: juke,
-  songsArr: songs,
+  songs: songsArr,
   currentSong: 0,
+  currentName: 0,
   start: function() {
-    $("#jukeBox")[this.currentSong].src = songs[0].src;
-    $("#jukeBox")[this.currentSong].play();
+    this.myJuke.src = this.songs[this.currentSong].src;
+    songName.innerText = songsArr[this.currentName].name;
+    juke.play();
   },
-
+// pauses current track
   pause: function() {
-    $("#jukeBox")[this.currentSong].pause();
+    juke.pause();
   },
-
+// continues playing current track from where it was paused
   play: function() {
-    $("#jukeBox")[this.currentSong].play();
+    juke.play();
   },
-// trying to get alternate track to play using if-else
+// advances to next track, then loops back to beginning.
   next: function() {
-    if (this.currentSong == 0) {
-      $("#jukeBox")[this.currentSong].src = songs[1].src;
-      $("#jukeBox")[this.currentSong].play();
-    } else {
-      $("#jukeBox")[this.currentSong].src = songs[0].src;
+    this.currentSong++;
+    this.currentName++;
+    if (this.currentSong < l || this.currentName < l) {
+        this.start();
+      } else if (this.currentSong == l || this.currentName == l) {
+         this.currentSong = 0;
+         this.currentName = 0;
+         this.start();
+      }
     }
   }
-};
-
-
-  // function jukeBox() {
-  //   $("#jukeBox")[0].src = $("#playlist li a")[0];
-  //   $("#jukeBox")[0].play();
-  //   $("#playlist li a").click(function(e) {
-  //     e.preventDefault();
-  //     $("#jukeBox")[0].src = this;
-  //     $("#jukeBox")[0].play();
-  //   });
-  // }

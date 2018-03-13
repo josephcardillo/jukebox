@@ -5,26 +5,30 @@
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="main.css">
-    <script type="text/javascript" src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding|Roboto+Mono" rel="stylesheet">
 
   </head>
-  <body>
-    <audio id="jukeBox">
-    </audio>
 
+  <body>
+    <div id="audio-player-position">
+      <audio id="jukeBox" class="audio-style" controls>
+      </audio>
+    </div>
+
+    <div id="header-position">
+      <h1 id="song-title">- - -</h1>
+    </div>
     <!-- <ul id="playlist">
       <li class="current-song"><a href="song-1.mp3">Song 1</a></li>
       <li class="current-song"><a href="song-2.mp3">Song 2</a></li>
     </ul> -->
+    <div id="list-position">
+        <button onclick="jukebox.start()" id="start">Start</button>
+        <button onclick="jukebox.pause()" id="pause">Pause</button>
+        <button onclick="jukebox.play()" id="play">Play</button>
+        <button onclick="jukebox.next()" id="next">Next</button>
+    </div>
+<script type="text/javascript" src="script.js"></script>
 
-    <button onclick="jukebox.start()" id="start">Start</button>
-    <button onclick="jukebox.pause()" id="pause">Pause</button>
-    <button onclick="jukebox.play()" id="play">Play</button>
-    <button onclick="jukebox.next()" id="next">Next</button>
-
-
-<script>
-
-</script>
   </body>
 </html>
